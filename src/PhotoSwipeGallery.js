@@ -10,6 +10,7 @@ class PhotoSwipeGallery extends React.Component {
     items: PropTypes.array.isRequired,
     options: PropTypes.object,
     thumbnailContent: PropTypes.func,
+    thumbnailClassName: PropTypes.string,
     id: PropTypes.string,
     className: PropTypes.string,
     isOpen: PropTypes.bool,
@@ -24,6 +25,7 @@ class PhotoSwipeGallery extends React.Component {
     id: '',
     className: '',
     isOpen: false,
+    thumbnailClassName: 'pswp-thumbnail',
     onClose: () => {
     }
   };
@@ -70,7 +72,7 @@ class PhotoSwipeGallery extends React.Component {
   };
 
   render() {
-    const { id, items, thumbnailContent, ...other } = this.props;
+    const { id, items, thumbnailContent, thumbnailClassName, ...other } = this.props;
     let { className } = this.props;
     className = classnames(['pswp-gallery', className]).trim();
     const eventProps = pick(other, events);
@@ -85,7 +87,7 @@ class PhotoSwipeGallery extends React.Component {
                 this.thumbnails = this.thumbnails || [];
                 this.thumbnails[index] = node;
               }}
-              className="pswp-thumbnail"
+              className={thumbnailClassName}
               onClick={this.showPhotoSwipe(index)}
             >
               {thumbnailContent(item)}

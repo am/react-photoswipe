@@ -5,6 +5,7 @@ import { PhotoSwipeGallery } from 'react-photoswipe';
 class GalleryPage extends React.Component {
   state = {
     isOpen: false,
+    thumbnailClassName: 'pswp-thumbnail some-vendor-style',
     items: [
       {
         src: 'http://lorempixel.com/1200/900/nightlife/1',
@@ -58,7 +59,7 @@ class GalleryPage extends React.Component {
   };
 
   render() {
-    const { items, options, isOpen } = this.state;
+    const { items, options, isOpen, thumbnailClassName } = this.state;
     return (
       <Document title="Gallery | ReactPhotoswipe" className="page-gallery">
         <div>
@@ -69,6 +70,7 @@ class GalleryPage extends React.Component {
             items={items}
             options={options}
             thumbnailContent={this.getThumbnailContent}
+            thumbnailClassName={thumbnailClassName}
             isOpen={isOpen}
             onClose={this.handleClose}
           />
@@ -82,4 +84,3 @@ class GalleryPage extends React.Component {
 }
 
 export default GalleryPage;
-
